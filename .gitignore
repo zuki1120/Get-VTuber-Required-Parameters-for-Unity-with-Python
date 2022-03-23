@@ -1,0 +1,16 @@
+*.png
+*.jpg
+__*
+Assets
+build
+main_*
+dist
+main-*
+file_tidy.py
+Videos*
+
+UnityAssets/Packages
+.DS_Store
+UnityAssets/.DS_Store
+
+git-personal-access-token.txt

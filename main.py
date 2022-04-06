@@ -7,7 +7,6 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import csv
-import os
 
 # for TCP connection with unity
 import socket
@@ -26,9 +25,9 @@ from facial_features import FacialFeatures, Eyes
 
 # global variable
 port = 5066         # have to be same as unity
-# filename = "yagoo.jpg"
-filepath = "./Data/data.csv"
-data_output = "data.csv"
+video_filepath = "./Videos/"
+data_filepath = "./Data/"
+
 # init TCP connection with unity
 # return the socket connected
 def init_TCP():
@@ -47,14 +46,18 @@ def print_debug_msg(args):
     msg = '%.4f ' * len(args) % args
     print(msg)
 
-def output_location_data(args):
-    with open(filepath, 'a+') as f:
+def output_location_data(args, filename):
+    with open(data_filepath + f"{filename}.csv", 'a+') as f:
         w = csv.writer(f)
         w.writerow(args)
 
 def main():
-
-    cap = cv2.VideoCapture(args.cam)
+    # 相機或是影片
+    if args.output:
+        filename = args.output
+        cap = cv2.VideoCapture(video_filepath + f"{filename}.mp4")
+    else:
+        cap = cv2.VideoCapture(args.cam)
 
     # Facemesh
     detector = FaceMeshDetector()
@@ -99,9 +102,9 @@ def main():
     while cap.isOpened():
         success, img = cap.read()
 
-        if not success:
-            print("Ignoring empty camera frame.")
-            continue
+        # if not success:
+        #     print("Ignoring empty camera frame.")
+        #     continue
 
         # Pose estimation by 3 steps:
         # 1. detect face;
@@ -203,7 +206,7 @@ def main():
                 data = [roll, pitch, yaw,
                         ear_left, ear_right, x_ratio_left, y_ratio_left, x_ratio_right, y_ratio_right,
                         mar, mouth_distance]
-                output_location_data(data)
+                output_location_data(data, args.output)
 
             # pose_estimator.draw_annotation_box(img, pose[0], pose[1], color=(255, 128, 128))
 
@@ -237,12 +240,12 @@ if __name__ == "__main__":
                         default=True)
 
     parser.add_argument("--debug", action="store_true",
-                        help="showing the camera's image for debugging",
+                        help="顯示鏡頭畫面和面部擷取",
                         default=True)
 
-    parser.add_argument("--output", action="store_true",
-                        help="output location data to csv",
-                        default=False)
+    parser.add_argument("--output", type=str,
+                        help="輸出影片臉部位置資料成CSV",
+                        default="")
     args = parser.parse_args()
 
     # demo code

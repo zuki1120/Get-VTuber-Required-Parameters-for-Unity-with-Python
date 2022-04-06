@@ -1,5 +1,7 @@
 *.png
 *.jpg
+*.gif
+*.mp4
 __*
 Assets
 build
@@ -7,9 +9,6 @@ main_*
 dist
 main-*
 file_tidy.py
-Data/*
-Image/*
-Video/*
 
 UnityAssets/Packages
 .DS_Store

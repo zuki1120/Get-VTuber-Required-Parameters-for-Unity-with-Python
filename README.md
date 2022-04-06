@@ -93,7 +93,7 @@ Video Walkthrough: [Click Me!](https://youtu.be/3pBc9Wkzzos?t=30)
 7. Run the following code in terminal
 [content in the bracket is optional]
 ```
-python main.py --connect [--debug]
+python main.py --connect [--debug] [--output filename]
 ```
 
 8. Enjoy

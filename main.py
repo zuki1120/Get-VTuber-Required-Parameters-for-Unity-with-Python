@@ -55,7 +55,7 @@ def main():
     # 相機或是影片
     if args.output:
         filename = args.output
-        cap = cv2.VideoCapture(video_filepath + f"{filename}.mp4")
+        cap = cv2.VideoCapture(video_filepath + filename)
     else:
         cap = cv2.VideoCapture(args.cam)
 

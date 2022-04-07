@@ -8,8 +8,8 @@ main_*
 dist
 main-*
 file_tidy.py
-Data/
-Videos/
+/Data
+/Videos
 
 UnityAssets/Packages
 .DS_Store

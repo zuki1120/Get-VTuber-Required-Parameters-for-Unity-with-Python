@@ -9,7 +9,7 @@ dist
 main-*
 file_tidy.py
 Data/*
-View/*
+Videos/*
 
 UnityAssets/Packages
 .DS_Store

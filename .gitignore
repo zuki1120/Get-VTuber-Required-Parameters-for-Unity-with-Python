@@ -9,9 +9,9 @@ dist
 main-*
 file_tidy.py
 Data/*.csv
-Videos/*.mp4
-Videos/*.avi
-Videos/*.wav
+Videos/*
+Videos/*
+Videos/*
 
 UnityAssets/Packages
 .DS_Store

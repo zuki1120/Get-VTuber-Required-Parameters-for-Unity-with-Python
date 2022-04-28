@@ -1,11 +1,11 @@
 import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
+import seaborn as sns
+import pandas as pd 
 import os
 
 data_filepath = './Data/'
 analyze_filepath = './offset_analyze'
-file = os.listdir(data_filepath)
+
 for f in os.listdir(data_filepath):
     
     info = os.path.join(data_filepath, f)
@@ -71,5 +71,32 @@ def compare(folder_path, target):
                     bbox_inches = 'tight',
                     pad_inches = 0.0)
         plt.close()
+
+def heatmap_plot(data_path, target):
+
+    analyze_filepath = './offset_analyze'
+    
+    df = pd.concat((pd.read_csv(os.path.join(data_path, file), header = None) 
+                    for file in os.listdir(data_path)), ignore_index=True)
+    
+    df.columns = ['roll', 'pitch', 'yaw',
+                        'ear_left', 'ear_right',
+                        'x_ratio_left', 'y_ratio_left',
+                        'x_ratio_right', 'y_ratio_right',
+                        'mar', 'mouth_distance']
+
+    plt.figure(figsize = (15, 5))
+    plt.title(f'Heatmap Correlation and Impact Distribution of {target}')
+    sns.heatmap(df.corr(), annot = True, cmap = 'mako', fmt = '.3f')
+
+    offset_filepath = os.path.join(analyze_filepath, f'{target}_heatmap/')
+    if not os.path.isdir(offset_filepath):
+        os.mkdir(offset_filepath)
+    plt.savefig(os.path.join(offset_filepath, f'heatmap_{target}.jpg'),
+                bbox_inches = 'tight',
+                pad_inches = 0.0)
+    plt.close()
+    
+heatmap_plot('./Data/', target = 'happy')
 
 compare('./Data/', target = 'happy')

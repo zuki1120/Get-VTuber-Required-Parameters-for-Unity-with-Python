@@ -13,7 +13,7 @@ python main.py --output {filename}
 Clone this project into your directory
 
 ```
-git clone https://github.com/mmmmmm44/VTuber-Python-Unity.git
+git clone https://github.com/zuki1120/Get-VTuber-Required-Parameters-for-Unity-with-Python.git
 cd "VTuber-Python-Unity"
 ```
 

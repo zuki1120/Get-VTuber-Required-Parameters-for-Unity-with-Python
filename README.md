@@ -1,45 +1,14 @@
-# VTuber Python Unity Tutorial
+# Get VTuber Required Parameters for Unity with Python Tutorial
 
-An Implementation of VTuber (Both 3D and Live2D) using Python and Unity. Supporting **face movement tracking**, **eye blinking detection**, **iris detection and tracking** and **mouth movement tracking** using **CPU only**.
+使用Python和Unity的VTuber（3D和Live2D）的實現。僅支援CPU的**人臉運動跟蹤，眨眼檢測，虹膜檢測和跟蹤**以及**嘴巴運動跟蹤**。
+
+本專案修改自[VTuber-Python-Unity](https://github.com/mmmmmm44/VTuber-Python-Unity)，有使用Live2D或3D上的相關問題可以查詢該篇之README。
 
 ## Usage
-![Live2D Demo](https://github.com/mmmmmm44/VTuber-Python-Unity/blob/main/Images/live2d_demo.gif)
 
-*Live2D Demo*
-
-![UnityChan 3D Demo](https://github.com/mmmmmm44/VTuber-Python-Unity/blob/main/Images/unitychan3d_demo.gif)
-
-*UnityChan 3D Demo*
-
-## Features
-* Facial landmarks detection and movement tracking supported by Facemesh by [Mediapipe](https://github.com/google/mediapipe).
-* Various facial expressions detection including eye blinking, iris and mouth movements.
-* Running **smooth 30 FPS** with **CPU only** for the aformentioned features.
-* Simple and clean UI for adjusting the sensibility of detection in Unity.
-* Saveload mechanism to save and load your preferences in Unity.
-* Including sample (Unity) projects for both 3D and Live2D models
-* Detailed and thorough explanation videos (with EN and ZH subtitles) [playlist](https://www.youtube.com/playlist?list=PL624GOtU88c4J9rGy7ZWjeSkOvCvuavan)
-
-*Due to Github file size limitation, most of the folders in the unity chan sample project are removed, yet the project can still run*
-
-## File Explanation
-|File|Description|
-|:---:|:---:|
-|main.py|The main program|
-|facial_landmark.py|The module which is used to detect your face and generate the facial landmarks.|
-|pose_estimator.py|The module which estimates your pose/ orientation of your head based on the landmarks.|
-|stabilizer.py|Implementation of Kalman Filter to stabilize the values.|
-|facial_features.py|Various facial features detection implementation, including blinking, iris detection and mouth movement.|
-|model.txt|The points of the 3D Canonical model used in Mediapipe. [Source file](https://github.com/google/mediapipe/blob/master/mediapipe/modules/face_geometry/data/canonical_face_model.obj)|
-|UnityAssets|Whole Unity Projects (in packages) and Scripts for both 3D (UnityChan) and Live2D (Hiyori) models|
-
-
-
-## Background
-Using avatars for streaming, content creation and VR gaming has been gaining increasing popularity, especially the boom of Hololive and other related companies active apperances in social media platforms such as YouTube and Twitter. Curious about the technology behind, I create this project after multiple researches.
-
-Existing projects rely on Dlib, which although providing reliable and accurate facial landmark detection, requires decent graphic cards to run. However, implemented with the recent FaceMesh model in [Mediapipe](https://github.com/google/mediapipe), accurate detection and tracking can be run smoothly using CPU only, making running on computers with mediocre graphic cards or laptops with integrated graphic cards possible.
-
+```shell
+python main.py --output {filename}
+```
 ## How To Use
 Clone this project into your directory
 
@@ -48,29 +17,23 @@ git clone https://github.com/mmmmmm44/VTuber-Python-Unity.git
 cd "VTuber-Python-Unity"
 ```
 
-Download the unity packages of sample projects of both live2D and unitychan 3D in the link next to: [Dropbox](https://www.dropbox.com/sh/qh7dcqt0z287idt/AACbljJEcD6knM6JL2uojfIaa?dl=0) 
-
-(last edit of the sample projects: 23-12-2021)
-
+Download the unity packages of sample projects of both live2D and unitychan 3D in the link next to: [Dropbox](https://www.dropbox.com/sh/qh7dcqt0z287idt/AACbljJEcD6knM6JL2uojfIaa?dl=0)
 ### Simple Setup
-1. Create An empty Unity 3D Project
+1. 創建一個空的 Unity 3D 項目
 
-2. Import either the Live2D or UnityChan3D package to your project. The corresponding SDKs have been included already.
+2. 將 Live2D 或 UnityChan3D 包導入您的項目。相應的 SDK 已經包含在內。
 
 Links for both packages (in a zip file): [Dropbox](https://www.dropbox.com/sh/qh7dcqt0z287idt/AACbljJEcD6knM6JL2uojfIaa?dl=0)
 
-_last edit: 23-12-2021_
+1. 運行場景。
 
-3. Run the Scene.
+2. 在終端運行以下代碼 [括號中的內容是可選的]
 
-4. Run the following code in terminal
-[content in the bracket is optional]
-```
-python main.py --connect [--debug]
+```shell
+python main.py --output {filename}
 ```
 
-5. Enjoy
-
+3. Enjoy
 
 ### Custom Setup (For people who want to import their own 3D/ Live2D model)
 
@@ -154,6 +117,7 @@ python main.py --connect [--debug]
  | [head-pose-estimation](https://github.com/yinguobing/head-pose-estimation) | [Yin Guobing](https://github.com/yinguobing) | [LICENSE](https://github.com/yinguobing/head-pose-estimation/blob/master/LICENSE) |
  | [VTuber_Unity](https://github.com/kwea123/VTuber_Unity) | [AI葵](https://github.com/kwea123) | [LICENSE](https://github.com/kwea123/VTuber_Unity/blob/master/LICENSE) |
  |[VTuber-MomoseHiyori](https://github.com/KennardWang/VTuber-MomoseHiyori) |[KennardWang](https://github.com/KennardWang)|[LICENSE](https://github.com/KennardWang/VTuber-MomoseHiyori/blob/master/LICENSE)|
+ |[VTuber-Python-Unity](https://github.com/mmmmmm44/VTuber-Python-Unity)|[mmmmmm44](https://github.com/mmmmmm44)|[LICENSE](https://github.com/mmmmmm44/VTuber-Python-Unity/blob/main/LICENSE)
 
 Hiyori Momose's model
 |Position|Creator|
